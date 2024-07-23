@@ -1,7 +1,10 @@
 {
   "name": "@apibara/protocol",
-  "version": "2.0.0-beta.1",
-  "type": "module",
+  "version": "2.0.0-beta.2",
+  "description": "Apibara DNA protocol client",
+  "repository": "apibara/typescript-sdk",
+  "license": "Apache-2.0",
+  "sideEffects": false,
   "source": "./src/index.ts",
   "main": "./src/index.ts",
   "exports": {
@@ -14,16 +17,24 @@
     "types": "./dist/index.d.ts",
     "exports": {
       ".": {
-        "types": "./dist/index.d.ts",
-        "import": "./dist/index.mjs",
-        "require": "./dist/index.cjs",
-        "default": "./dist/index.mjs"
+        "import": {
+          "types": "./dist/index.d.mts",
+          "default": "./dist/index.mjs"
+        },
+        "require": {
+          "types": "./dist/index.d.cts",
+          "default": "./dist/index.cjs"
+        }
       },
       "./testing": {
-        "types": "./dist/testing/index.d.ts",
-        "import": "./dist/testing/index.mjs",
-        "require": "./dist/testing/index.cjs",
-        "default": "./dist/testing/index.mjs"
+        "import": {
+          "types": "./dist/testing/index.d.mts",
+          "default": "./dist/testing/index.mjs"
+        },
+        "require": {
+          "types": "./dist/testing/index.d.cts",
+          "default": "./dist/testing/index.cjs"
+        }
       }
     }
   },
@@ -37,13 +48,6 @@
     "lint:fix": "pnpm lint --write",
     "format": "biome format . --write"
   },
-  "devDependencies": {
-    "@bufbuild/buf": "^1.32.2",
-    "@types/long": "^5.0.0",
-    "@types/node": "^20.12.13",
-    "unbuild": "^2.0.0",
-    "vitest": "^1.6.0"
-  },
   "dependencies": {
     "@effect/schema": "^0.67.15",
     "effect": "^3.2.6",
@@ -52,5 +56,12 @@
     "nice-grpc-common": "^2.0.2",
     "protobufjs": "^7.3.0",
     "viem": "^2.13.2"
+  },
+  "devDependencies": {
+    "@bufbuild/buf": "^1.32.2",
+    "@types/long": "^5.0.0",
+    "@types/node": "^20.12.13",
+    "unbuild": "^2.0.0",
+    "vitest": "^1.6.0"
   }
 }
